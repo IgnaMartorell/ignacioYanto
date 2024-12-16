@@ -3,14 +3,15 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Asegura que el contenido se alinee desde la parte superior */
     align-items: center;
-    min-height: 100vh;
+    min-height: 100%; /* Cambié de 100vh a 100% */
     margin: 0;
     background: linear-gradient(270deg, #fdf6f0, #ffe5ec); /* Fondo degradado */
     background-size: 400% 400%;
     animation: fondoAnimado 10s ease infinite;
     text-align: center;
+    overflow-y: auto; /* Permite el scroll vertical */
 }
 
 /* Títulos principales */
