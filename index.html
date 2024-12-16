@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ignacio y Antonella</title>
-  <!-- Usa una ruta relativa para el archivo CSS -->
   <link rel="stylesheet" href="prueba.css">
   <style>
     body {
@@ -17,7 +16,33 @@
       margin: 0;
       background-color: #fdf6f0;
       text-align: center;
-      overflow: hidden;
+      overflow-y: auto;  /* Habilitar el scroll en toda la página */
+    }
+
+    /* Estilo para la sección con scroll */
+    .scroll-content {
+      max-height: 500px;  /* Altura máxima del área con scroll */
+      overflow-y: auto;   /* Scroll vertical */
+      width: 80%;
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Estilo para otras secciones */
+    .section {
+      margin: 20px 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 2rem;
     }
 
     .contador {
@@ -94,7 +119,7 @@
       position: fixed;
       top: -10px;
       color: red;
-      font-size: 30px; /* Aumenté el tamaño */
+      font-size: 30px;
       pointer-events: none;
       animation: lluvia 5s linear infinite;
       z-index: 9999;
@@ -170,10 +195,33 @@
     // Carrusel de imágenes
     let currentIndex = 0;
     const images = [
-      'https://via.placeholder.com/600x300/FFB6C1/FFFFFF?text=Imagen+1',
-      'https://via.placeholder.com/600x300/FFD700/FFFFFF?text=Imagen+2',
-      'https://via.placeholder.com/600x300/ADFF2F/FFFFFF?text=Imagen+3'
-    ];
+  'https://via.placeholder.com/600x300/FFB6C1/FFFFFF?text=Imagen+1',
+  'https://via.placeholder.com/600x300/FFD700/FFFFFF?text=Imagen+2',
+  'https://via.placeholder.com/600x300/ADFF2F/FFFFFF?text=Imagen+3',
+  'https://via.placeholder.com/600x300/FF6347/FFFFFF?text=Imagen+4',
+  'https://via.placeholder.com/600x300/40E0D0/FFFFFF?text=Imagen+5',
+  'https://via.placeholder.com/600x300/7FFF00/FFFFFF?text=Imagen+6',
+  'https://via.placeholder.com/600x300/D2691E/FFFFFF?text=Imagen+7',
+  'https://via.placeholder.com/600x300/FF4500/FFFFFF?text=Imagen+8',
+  'https://via.placeholder.com/600x300/DAA520/FFFFFF?text=Imagen+9',
+  'https://via.placeholder.com/600x300/0000FF/FFFFFF?text=Imagen+10',
+  'https://via.placeholder.com/600x300/8A2BE2/FFFFFF?text=Imagen+11',
+  'https://via.placeholder.com/600x300/5F9EA0/FFFFFF?text=Imagen+12',
+  'https://via.placeholder.com/600x300/FF1493/FFFFFF?text=Imagen+13',
+  'https://via.placeholder.com/600x300/D3D3D3/FFFFFF?text=Imagen+14',
+  'https://via.placeholder.com/600x300/F0E68C/FFFFFF?text=Imagen+15',
+  'https://via.placeholder.com/600x300/8B0000/FFFFFF?text=Imagen+16',
+  'https://via.placeholder.com/600x300/ADFF2F/FFFFFF?text=Imagen+17',
+  'https://via.placeholder.com/600x300/9932CC/FFFFFF?text=Imagen+18',
+  'https://via.placeholder.com/600x300/00CED1/FFFFFF?text=Imagen+19',
+  'https://via.placeholder.com/600x300/FF6347/FFFFFF?text=Imagen+20',
+  'https://via.placeholder.com/600x300/FFD700/FFFFFF?text=Imagen+21',
+  'https://via.placeholder.com/600x300/DB7093/FFFFFF?text=Imagen+22',
+  'https://via.placeholder.com/600x300/9400D3/FFFFFF?text=Imagen+23',
+  'https://via.placeholder.com/600x300/20B2AA/FFFFFF?text=Imagen+24',
+  'https://via.placeholder.com/600x300/8B0000/FFFFFF?text=Imagen+25'
+];
+
 
     function moveCarousel() {
       currentIndex = (currentIndex + 1) % images.length;
@@ -183,27 +231,25 @@
 
     setInterval(moveCarousel, 3000);  // Mueve el carrusel cada 3 segundos
 
-// Crear corazones y otros emojis flotantes
-function crearCorazon() {
-  const emojis = ["❤️", "💖", "💗", "💕", "⌨️", "💊", "💻", "🩺"]; // Lista de emojis
-  const emoji = emojis[Math.floor(Math.random() * emojis.length)]; // Selección aleatoria
+    // Crear corazones y otros emojis flotantes
+    function crearCorazon() {
+      const emojis = ["❤️", "💖", "💗", "💕", "⌨️", "💊", "💻", "🩺"];
+      const emoji = emojis[Math.floor(Math.random() * emojis.length)];
 
-  const corazon = document.createElement("div");
-  corazon.classList.add("corazon");
-  corazon.textContent = emoji; // Usar emoji aleatorio
-  corazon.style.left = Math.random() * window.innerWidth + "px";
-  corazon.style.animationDuration = Math.random() * 3 + 2 + "s";
-  corazon.style.fontSize = Math.random() * 20 + 20 + "px"; // Tamaños variados
-  document.body.appendChild(corazon);
+      const corazon = document.createElement("div");
+      corazon.classList.add("corazon");
+      corazon.textContent = emoji;
+      corazon.style.left = Math.random() * window.innerWidth + "px";
+      corazon.style.animationDuration = Math.random() * 3 + 2 + "s";
+      corazon.style.fontSize = Math.random() * 20 + 20 + "px";
+      document.body.appendChild(corazon);
 
-  // Eliminar el emoji después de que haya caído
-  setTimeout(() => {
-    corazon.remove();
-  }, 5000);
-}
+      setTimeout(() => {
+        corazon.remove();
+      }, 5000);
+    }
 
-setInterval(crearCorazon, 200); // Crea un emoji cada 200ms
-
+    setInterval(crearCorazon, 200); // Crea un emoji cada 200ms
 
     // Función para iniciar o pausar la canción
     let audio = new Audio('MILO J - M.A.I.mp3');
@@ -223,12 +269,34 @@ setInterval(crearCorazon, 200); // Crea un emoji cada 200ms
   <!-- Títulos y carrusel -->
   <div class="titulo-principal">
     <h1>Ignacio y Antonella</h1>
-    <!-- Carrusel de imágenes -->
     <div class="carousel-container">
       <div class="carousel">
         <img src="https://media.discordapp.net/attachments/854256399073017886/1318329597892362310/0a41d27a-d97d-4fa1-888d-94aee88508c0.jpg?ex=6761ed9d&is=67609c1d&hm=fd1ab666f812d768557dcfa47158d1e129c2578497ebd1e66d77a059415babe8&=&format=webp&width=314&height=559" alt="Imagen 1">
         <img src="https://media.discordapp.net/attachments/854256399073017886/1318329598261596281/0ae8f7bb-8259-47a8-bff0-f69ec4ae7da7.jpg?ex=6761ed9d&is=67609c1d&hm=98f64f0b4856614a31decf72fa5c911ba16d8d3a6da62703370e6f25bc0aeac4&=&format=webp&width=314&height=559" alt="Imagen 2">
         <img src="https://media.discordapp.net/attachments/854256399073017886/1318329598571708546/1faa3d8c-717e-491a-b873-ba3ebcfbdd0a.jpg?ex=6761ed9d&is=67609c1d&hm=e8c13316051a8ac75c0d56db096fc70114eeaa1aef7b4b4eb512895a510acf30&=&format=webp&width=314&height=559" alt="Imagen 3">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329599050125433/2e7d586c-20a3-45b6-b378-fc32a3f22c69.jpg?ex=6761ed9d&is=67609c1d&hm=e0b6314f95900dc0a8addc3c24c9e90552bcb8bf71c61a6109756cc9bdaf7573&=&format=webp&width=314&height=559" alt="Imagen 4">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329599377014815/6da268f7-12cd-4e56-8bf8-283c29ac4089.jpg?ex=6761ed9d&is=67609c1d&hm=0ed80364a9144dd3038b7f48487e2dc5432322a5bce44215f279234b97d6f789&=&format=webp&width=314&height=559" alt="Imagen 5">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329599763152927/7d607509-f2ee-4b29-89fb-8857cdf89f70.jpg?ex=6761ed9d&is=67609c1d&hm=8ca463cbd21da9a399f6c8811bcfe0c089f015ece055161bca0b98c216348e07&=&format=webp&width=314&height=559" alt="Imagen 6">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329600048103535/9df7e397-1ca4-422b-bbb3-bf0d81b87b4c.jpg?ex=6761ed9e&is=67609c1e&hm=78e1459463a8eab85a692a204f35955d94e30a77f845592b8f539f9c11be7f6c&=&format=webp&width=314&height=559" alt="Imagen 7">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329600396492860/41e80638-0556-480c-846c-fdff9715a8bd.jpg?ex=6761ed9e&is=67609c1e&hm=902fb870e9e185deec4851ebc156f43a53139f4c7e7b4d7660bfcdc50298134a&=&format=webp&width=314&height=559" alt="Imagen 8">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329600778178590/44dd56f6-2145-4cf4-8541-d98922a35869.jpg?ex=6761ed9e&is=67609c1e&hm=7b43166c1a37431f2a5d29ca2f7d46b6e0509361aaf66e965c9971dd7a324023&=&format=webp&width=314&height=559" alt="Imagen 9">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329601168244879/46db27d8-40d3-4d3d-954c-bf4b02901e33.jpg?ex=6761ed9e&is=67609c1e&hm=e4db69bfc43705c356684d416d27632ab969e617db15284c4f753f0778f20070&=&format=webp&width=314&height=559" alt="Imagen 10">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329701109862644/51ecb64b-154d-4a27-a717-c07ead2d9102.jpg?ex=6761edb6&is=67609c36&hm=48f08244dc5e57b75a730d7a229d8488e3f68ec7f10501317ff1ea4bb45b8060&=&format=webp&width=314&height=559" alt="Imagen 11">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329701458116618/69bac209-db62-4335-a78a-6dd825c39e6b.jpg?ex=6761edb6&is=67609c36&hm=409cf89063d5ca3179cd5ddc2a089cbd5b56d4e3809791c8427778de1fa4ca89&=&format=webp&width=314&height=559" alt="Imagen 12">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329701789470790/75ea5da3-cf7b-46af-aa78-dadb7c0bc5b4.jpg?ex=6761edb6&is=67609c36&hm=1e3392b7d279f901cc9f7dac6c7ae1d792ac271971b4429093c0d505eb2a99c4&=&format=webp&width=314&height=559" alt="Imagen 13">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329702124884079/79c9cdf5-4b20-4669-9bd3-15676c40a335.jpg?ex=6761edb6&is=67609c36&hm=33021ddf3120871d47bb0357a66d4d7588ca617f476bc2adaacf4ed16d381ef2&=&format=webp&width=314&height=559" alt="Imagen 14">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329702447976562/852c8442-882e-4304-ac38-ddf9830d372b.jpg?ex=6761edb6&is=67609c36&hm=091f046b09f9b4d069408f547c46c105fd5580163b33df0207dde56f8f227246&=&format=webp&width=314&height=559" alt="Imagen 15">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329702800293944/3613f3fc-a3dd-43f1-a5b0-8f25189ba03a.jpg?ex=6761edb6&is=67609c36&hm=8d742c55fd1b7295c874826bcf9c660b1dc68e0ca9486fa3cc6b13231a00fc1d&=&format=webp&width=314&height=559" alt="Imagen 16">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329703173591190/6998b094-eead-4712-92ee-a80cc0d5fbda.jpg?ex=6761edb6&is=67609c36&hm=a87fdf413d7da33521bed57e381030d3209717b3190f6bfec16b3b2c63779367&=&format=webp&width=314&height=559" alt="Imagen 17">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329703727108167/9347c304-e0aa-40c3-8bbb-88c638cbbe23.jpg?ex=6761edb6&is=67609c36&hm=7dad8b8109bcbbbf430a8537032214f61bac14cf8f15f90785e689f49dc8fcd7&=&format=webp&width=314&height=559" alt="Imagen 18">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329704037613670/34065db5-2e42-4a6c-9740-b762bd94ace1.jpg?ex=6761edb6&is=67609c36&hm=1f4b7e8af288786699267cc57bb41857c10d8f40e2c1ff8a5c62078055d02f33&=&format=webp&width=314&height=559" alt="Imagen 19">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329704343801907/3403433e-a9f0-418b-abda-dbcb8a702aeb.jpg?ex=6761edb6&is=67609c36&hm=030260f365f0a8d2d156932518af51bb7d55e752b574ac72dc203ecf6427f300&=&format=webp&width=314&height=559" alt="Imagen 20">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329701109862644/51ecb64b-154d-4a27-a717-c07ead2d9102.jpg?ex=6761edb6&is=67609c36&hm=48f08244dc5e57b75a730d7a229d8488e3f68ec7f10501317ff1ea4bb45b8060&=&format=webp&width=314&height=559" alt="Imagen 21">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329737432797195/f45cd578-3a9b-4fed-99b7-d404e49baf2f.jpg?ex=6761edbe&is=67609c3e&hm=430143385b9f56238d80ff2b2ec75948aae5fccd95f17c6fd09cd312efe9e908&=&format=webp&width=314&height=559" alt="Imagen 22">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329737042591866/ecbd620f-9b5c-4235-ba77-b9f5231d91bf.jpg?ex=6761edbe&is=67609c3e&hm=6233609f1c1a0d2dcfdc7291d062bae2e8923ff03cbfa46dcabed962b69d9891&=&format=webp&width=314&height=559" alt="Imagen 23">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329736648331404/e67f3dab-3463-4e33-854f-bcfbfbbe5023.jpg?ex=6761edbe&is=67609c3e&hm=c5dc5d293c3629db5cd4b5db29b697551f1dc972571787f233575416160e65f2&=&format=webp&width=314&height=559" alt="Imagen 24">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329736195211334/deb9a8bf-77f1-4769-83e7-ecd9e4c60121.jpg?ex=6761edbe&is=67609c3e&hm=f30cd808f6be783fc85fb0deb51c7cfd97a862dba9a310eed93e53aa55b38c37&=&format=webp&width=314&height=559" alt="Imagen 25">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329735427653682/b0ec2fbf-6f98-4363-9130-441b7f41483f.jpg?ex=6761edbe&is=67609c3e&hm=bb05a55ed2c25cbe40808631490631201659e8338775676d0ff2fac83724a4b9&=&format=webp&width=314&height=559" alt="Imagen 26">
       </div>
     </div>
   </div>
@@ -254,9 +322,10 @@ setInterval(crearCorazon, 200); // Crea un emoji cada 200ms
     </div>
   </div>
 
-  <!-- Botón para reproducir la música -->
-  <button class="btn-audio" onclick="toggleAudio()">Reproducir/Pausar Canción</button>
+  <!-- Botón para iniciar o pausar la canción -->
+  <button class="btn-audio" onclick="toggleAudio()">Play/Pause</button>
 
+  <!-- Pie de página -->
   <footer>
     Mi amor💗, No sé si las palabras pueden realmente expresar lo que siento por ti, 
     pero quiero que sepas lo mucho que te aprecio y valoro. Cada día a tu lado es un 
