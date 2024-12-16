@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #fdf6f0; /* Fondo suave */
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #4b4b4b;
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    color: #d16b86;
+    margin-bottom: 30px;
+  }
+  
+  .contador {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap; /* Para dispositivos pequeños */
+    font-size: 24px;
+    color: #4b4b4b;
+  }
+  
+  .contador div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contador img {
+    width: 60px; /* Tamaño ajustado de la imagen */
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .contador span {
+    font-size: 36px;
+    font-weight: bold;
+    color: #3f4f68;
+  }
+  
+  .titulo {
+    font-size: 18px;
+    color: #707070;
+  }
+  
+  footer {
+    margin-top: 40px;
+    font-size: 16px;
+    color: #555;
+    max-width: 600px; /* Limita el ancho del texto */
+    text-align: center;
+    line-height: 1.5; /* Espaciado entre líneas */
+    padding: 10px 20px; /* Espaciado alrededor del texto */
+    background-color: #fefefe; /* Fondo sutil */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  } 
+
+/* Estilo para los corazones */
+.corazon {
+    position: fixed; /* Permite que se muevan sobre toda la pantalla */
+    top: -10px; /* Comienzan justo fuera de la pantalla */
+    color: #ff69b4; /* Color rosa vibrante */
+    opacity: 0.8; /* Un poco de transparencia */
+    pointer-events: none; /* Evita que interfieran con clics */
+    animation: caer 5s linear forwards, oscilar 2s ease-in-out infinite;
+    z-index: 9999; /* Encima de otros elementos */
+  }
+  
+  /* Animación para que caigan */
+  @keyframes caer {
+    to {
+      transform: translateY(100vh); /* Baja hasta el fondo de la pantalla */
+      opacity: 0; /* Se desvanece al llegar */
+    }
+  }
+  
+  /* Animación para que oscilen ligeramente */
+  @keyframes oscilar {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(20px); /* Oscila hacia un lado */
+    }
+  }
+
+/* Estilo del botón */
+.btn-audio {
+    background-color: #ff4d6d; /* Fondo color rosa */
+    color: white; /* Texto en blanco */
+    font-size: 18px; /* Tamaño de la fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor cuando pasas el mouse */
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+  }
+  
+  /* Efecto al pasar el ratón sobre el botón */
+  .btn-audio:hover {
+    background-color: #d1395f; /* Cambia el color cuando el ratón pasa por encima */
+  }
+  

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ignacio y Antonella</title>
+  <link rel="stylesheet" href="C:\Users\marto\OneDrive\Escritorio\prueba.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #fdf6f0; /* Fondo suave */
+      text-align: center;
+      overflow: hidden; /* Evita scroll por los corazones */
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #4b4b4b;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #d16b86;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    .contador {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap; /* Para dispositivos pequeños */
+      font-size: 24px;
+      color: #4b4b4b;
+    }
+
+    .contador div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contador img {
+      width: 60px; /* Tamaño ajustado de la imagen */
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .contador span {
+      font-size: 36px;
+      font-weight: bold;
+      color: #3f4f68;
+    }
+
+    .titulo {
+      font-size: 18px;
+      color: #707070;
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #999;
+    }
+
+    /* Carrusel de imágenes */
+    .carousel-container {
+      position: relative;
+      width: 80%;
+      max-width: 600px;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 1s ease;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    /* Lluvia de corazones */
+    @keyframes lluvia {
+      0% {
+        transform: translateY(-100vh) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) translateX(20px);
+        opacity: 0;
+      }
+    }
+
+    .corazon {
+      position: fixed;
+      top: -10px;
+      color: #ff4d6d;
+      font-size: 20px;
+      pointer-events: none;
+      animation: lluvia 5s linear infinite;
+      z-index: 9999; /* Por encima de todo */
+    }
+
+    /* Alineación del título y subtítulo */
+    .titulo-principal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .titulo-principal h1 {
+      font-size: 3rem; /* Aumento el tamaño del texto */
+      color: #4b4b4b;
+      margin: 0;
+    }
+
+    .titulo-principal h2 {
+      font-size: 2rem;
+      color: #d16b86;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    /* Estilo del botón */
+    .btn-audio {
+      padding: 10px 20px;
+      background-color: #d16b86;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-audio:hover {
+      background-color: #c15574;
+    }
+
+  </style>
+  <script>
+    // Fecha de inicio (3 de junio de 2024)
+    const fechaInicio = new Date('2024-06-03');
+
+    function actualizarContador() {
+      const hoy = new Date();
+      let years = hoy.getFullYear() - fechaInicio.getFullYear();
+      let months = hoy.getMonth() - fechaInicio.getMonth();
+      let days = hoy.getDate() - fechaInicio.getDate();
+
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      if (days < 0) {
+        months--;
+        const lastMonth = new Date(hoy.getFullYear(), hoy.getMonth(), 0);
+        days += lastMonth.getDate();
+      }
+
+      document.getElementById('años').textContent = years;
+      document.getElementById('meses').textContent = months;
+      document.getElementById('dias').textContent = days;
+    }
+
+    window.onload = actualizarContador;
+
+    // Carrusel de imágenes
+    let currentIndex = 0;
+    const images = [
+      'https://via.placeholder.com/600x300/FFB6C1/FFFFFF?text=Imagen+1',
+      'https://via.placeholder.com/600x300/FFD700/FFFFFF?text=Imagen+2',
+      'https://via.placeholder.com/600x300/ADFF2F/FFFFFF?text=Imagen+3'
+    ];
+
+    function moveCarousel() {
+      currentIndex = (currentIndex + 1) % images.length;
+      const carousel = document.querySelector('.carousel');
+      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    setInterval(moveCarousel, 3000);  // Mueve el carrusel cada 3 segundos
+
+    // Crear corazones flotantes
+    function crearCorazon() {
+      const corazon = document.createElement("div");
+      corazon.classList.add("corazon");
+      corazon.textContent = "❤️";
+      corazon.style.left = Math.random() * window.innerWidth + "px";  // Posición aleatoria en el eje X
+      corazon.style.animationDuration = Math.random() * 3 + 2 + "s";  // Duración aleatoria para cada corazón
+      document.body.appendChild(corazon);
+
+      // Eliminar el corazón después de que haya caído
+      setTimeout(() => {
+        corazon.remove();
+      }, 5000);
+    }
+
+    setInterval(crearCorazon, 200);  // Crea un corazón cada 200ms
+
+    // Función para iniciar o pausar la canción
+    let audio = new Audio('MILO J - M.A.I.mp3');
+    let isPlaying = false;
+
+
+    function toggleAudio() {
+      if (isPlaying) {
+        audio.pause(); // Pausa la canción
+      } else {
+        audio.play(); // Reproduce la canción
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+</head>
+<body>
+  <!-- Títulos y carrusel -->
+  <div class="titulo-principal">
+    <h1>Ignacio y Antonella</h1>
+    <!-- Carrusel de imágenes -->
+    <div class="carousel-container">
+      <div class="carousel">
+        <img src="https://via.placeholder.com/600x300/FFB6C1/FFFFFF?text=Imagen+1" alt="Imagen 1">
+        <img src="https://via.placeholder.com/600x300/FFD700/FFFFFF?text=Imagen+2" alt="Imagen 2">
+        <img src="https://via.placeholder.com/600x300/ADFF2F/FFFFFF?text=Imagen+3" alt="Imagen 3">
+      </div>
+    </div>
+  </div>
+  <h2>Juntos Por Siempre</h2>
+
+  <!-- Contador central -->
+  <div class="contador">
+    <div>
+      <img src="https://media.discordapp.net/attachments/854256399073017886/1318226295514992721/pngwing.com.png?ex=67618d68&is=67603be8&hm=289b1e932e5c7ac20aedd005629837dca916b9567ef7699198e3ac15c34df71f&=&format=webp&quality=lossless&width=540&height=559" alt="Calendario Años">
+      <span id="años">0</span>
+      <div class="titulo">Años</div>
+    </div>
+    <div>
+      <img src="https://media.discordapp.net/attachments/854256399073017886/1318226295514992721/pngwing.com.png?ex=67618d68&is=67603be8&hm=289b1e932e5c7ac20aedd005629837dca916b9567ef7699198e3ac15c34df71f&=&format=webp&quality=lossless&width=540&height=559" alt="Calendario Meses">
+      <span id="meses">0</span>
+      <div class="titulo">Meses</div>
+    </div>
+    <div>
+      <img src="https://media.discordapp.net/attachments/854256399073017886/1318226295514992721/pngwing.com.png?ex=67618d68&is=67603be8&hm=289b1e932e5c7ac20aedd005629837dca916b9567ef7699198e3ac15c34df71f&=&format=webp&quality=lossless&width=540&height=559" alt="Calendario Días">
+      <span id="dias">0</span>
+      <div class="titulo">Días</div>
+    </div>
+  </div>
+
+  <!-- Botón para reproducir o pausar música -->
+  <button class="btn-audio" onclick="toggleAudio()">Reproducir/Pausar Música</button>
+
+  <footer>
+    Mi amor💗, No sé si las palabras pueden realmente expresar lo que siento por ti, 
+    pero quiero que sepas lo mucho que te aprecio y valoro. Cada día a tu lado es un 
+    regalo que agradezco profundamente. Tu amor, tu apoyo y tu comprensión hacen que 
+    cada momento sea especial. Eres mi compañera, mi amiga, mi todo. A tu lado he 
+    aprendido lo que significa realmente ser feliz, y me siento increíblemente 
+    afortunado de poder compartir mi vida contigo💖.
+  </footer>
+</body>
+</html>
