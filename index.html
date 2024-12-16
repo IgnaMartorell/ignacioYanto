@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ignacio y Antonella</title>
-  <link rel="stylesheet" href="C:\Users\marto\OneDrive\Escritorio\prueba.css">
+  <!-- Usa una ruta relativa para el archivo CSS -->
+  <link rel="stylesheet" href="prueba.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -14,30 +15,16 @@
       align-items: center;
       min-height: 100vh;
       margin: 0;
-      background-color: #fdf6f0; /* Fondo suave */
+      background-color: #fdf6f0;
       text-align: center;
-      overflow: hidden; /* Evita scroll por los corazones */
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      color: #4b4b4b;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-size: 2rem;
-      color: #d16b86;
-      margin-top: 10px;
-      margin-bottom: 30px;
-      font-weight: bold;
+      overflow: hidden;
     }
 
     .contador {
       display: flex;
       gap: 30px;
       justify-content: center;
-      flex-wrap: wrap; /* Para dispositivos pequeños */
+      flex-wrap: wrap;
       font-size: 24px;
       color: #4b4b4b;
     }
@@ -49,7 +36,7 @@
     }
 
     .contador img {
-      width: 60px; /* Tamaño ajustado de la imagen */
+      width: 60px;
       height: auto;
       margin-bottom: 10px;
     }
@@ -106,11 +93,11 @@
     .corazon {
       position: fixed;
       top: -10px;
-      color: #ff4d6d;
-      font-size: 20px;
+      color: red;
+      font-size: 30px; /* Aumenté el tamaño */
       pointer-events: none;
       animation: lluvia 5s linear infinite;
-      z-index: 9999; /* Por encima de todo */
+      z-index: 9999;
     }
 
     /* Alineación del título y subtítulo */
@@ -122,14 +109,14 @@
     }
 
     .titulo-principal h1 {
-      font-size: 3rem; /* Aumento el tamaño del texto */
-      color: #4b4b4b;
+      font-size: 3rem;
+      color: #e086b3;
       margin: 0;
     }
 
     .titulo-principal h2 {
       font-size: 2rem;
-      color: #d16b86;
+      color: purple;
       margin-top: 10px;
       margin-bottom: 30px;
       font-weight: bold;
@@ -151,7 +138,6 @@
     .btn-audio:hover {
       background-color: #c15574;
     }
-
   </style>
   <script>
     // Fecha de inicio (3 de junio de 2024)
@@ -197,33 +183,37 @@
 
     setInterval(moveCarousel, 3000);  // Mueve el carrusel cada 3 segundos
 
-    // Crear corazones flotantes
-    function crearCorazon() {
-      const corazon = document.createElement("div");
-      corazon.classList.add("corazon");
-      corazon.textContent = "❤️";
-      corazon.style.left = Math.random() * window.innerWidth + "px";  // Posición aleatoria en el eje X
-      corazon.style.animationDuration = Math.random() * 3 + 2 + "s";  // Duración aleatoria para cada corazón
-      document.body.appendChild(corazon);
+// Crear corazones y otros emojis flotantes
+function crearCorazon() {
+  const emojis = ["❤️", "💖", "💗", "💕", "⌨️", "💊", "💻", "🩺"]; // Lista de emojis
+  const emoji = emojis[Math.floor(Math.random() * emojis.length)]; // Selección aleatoria
 
-      // Eliminar el corazón después de que haya caído
-      setTimeout(() => {
-        corazon.remove();
-      }, 5000);
-    }
+  const corazon = document.createElement("div");
+  corazon.classList.add("corazon");
+  corazon.textContent = emoji; // Usar emoji aleatorio
+  corazon.style.left = Math.random() * window.innerWidth + "px";
+  corazon.style.animationDuration = Math.random() * 3 + 2 + "s";
+  corazon.style.fontSize = Math.random() * 20 + 20 + "px"; // Tamaños variados
+  document.body.appendChild(corazon);
 
-    setInterval(crearCorazon, 200);  // Crea un corazón cada 200ms
+  // Eliminar el emoji después de que haya caído
+  setTimeout(() => {
+    corazon.remove();
+  }, 5000);
+}
+
+setInterval(crearCorazon, 200); // Crea un emoji cada 200ms
+
 
     // Función para iniciar o pausar la canción
     let audio = new Audio('MILO J - M.A.I.mp3');
     let isPlaying = false;
 
-
     function toggleAudio() {
       if (isPlaying) {
-        audio.pause(); // Pausa la canción
+        audio.pause();
       } else {
-        audio.play(); // Reproduce la canción
+        audio.play();
       }
       isPlaying = !isPlaying;
     }
@@ -232,17 +222,18 @@
 <body>
   <!-- Títulos y carrusel -->
   <div class="titulo-principal">
-    <h2>Ignacio y Antonella</h2>
+    <h1>Ignacio y Antonella</h1>
     <!-- Carrusel de imágenes -->
     <div class="carousel-container">
       <div class="carousel">
-        <img src="https://via.placeholder.com/600x300/FFB6C1/FFFFFF?text=Imagen+1" alt="Imagen 1">
-        <img src="https://via.placeholder.com/600x300/FFD700/FFFFFF?text=Imagen+2" alt="Imagen 2">
-        <img src="https://via.placeholder.com/600x300/ADFF2F/FFFFFF?text=Imagen+3" alt="Imagen 3">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329597892362310/0a41d27a-d97d-4fa1-888d-94aee88508c0.jpg?ex=6761ed9d&is=67609c1d&hm=fd1ab666f812d768557dcfa47158d1e129c2578497ebd1e66d77a059415babe8&=&format=webp&width=314&height=559" alt="Imagen 1">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329598261596281/0ae8f7bb-8259-47a8-bff0-f69ec4ae7da7.jpg?ex=6761ed9d&is=67609c1d&hm=98f64f0b4856614a31decf72fa5c911ba16d8d3a6da62703370e6f25bc0aeac4&=&format=webp&width=314&height=559" alt="Imagen 2">
+        <img src="https://media.discordapp.net/attachments/854256399073017886/1318329598571708546/1faa3d8c-717e-491a-b873-ba3ebcfbdd0a.jpg?ex=6761ed9d&is=67609c1d&hm=e8c13316051a8ac75c0d56db096fc70114eeaa1aef7b4b4eb512895a510acf30&=&format=webp&width=314&height=559" alt="Imagen 3">
       </div>
     </div>
   </div>
-  <h2>♡ Juntos Por ♡ </h2>
+
+  <h2><span class=".corazon">♡</span> Juntos Por <span class=".corazon">♡</span></h2>
 
   <!-- Contador central -->
   <div class="contador">
@@ -263,8 +254,8 @@
     </div>
   </div>
 
-  <!-- Botón para reproducir o pausar música -->
-  <button class="btn-audio" onclick="toggleAudio()">Reproducir/Pausar Música</button>
+  <!-- Botón para reproducir la música -->
+  <button class="btn-audio" onclick="toggleAudio()">Reproducir/Pausar Canción</button>
 
   <footer>
     Mi amor💗, No sé si las palabras pueden realmente expresar lo que siento por ti, 
