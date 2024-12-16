@@ -1,18 +1,22 @@
-/* Estilo general del body */
 body {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Asegura que el contenido se alinee desde la parte superior */
+    justify-content: center;
     align-items: center;
-    min-height: 100%; /* Cambié de 100vh a 100% */
+    min-height: 100vh;
     margin: 0;
-    background: linear-gradient(270deg, #fdf6f0, #ffe5ec); /* Fondo degradado */
-    background-size: 400% 400%;
-    animation: fondoAnimado 10s ease infinite;
+    background-color: #fdf6f0;
     text-align: center;
-    overflow-y: auto; /* Permite el scroll vertical */
+    /* Cambia de 'overflow: hidden' a 'overflow: auto' o 'overflow-y: scroll' */
+    overflow: auto; /* Permite el desplazamiento vertical y horizontal cuando sea necesario */
+}  
+.contenedor-principal {
+    min-height: 100vh;
+    overflow-y: auto;
+    width: 100%;
 }
+
 
 /* Títulos principales */
 h1 {
