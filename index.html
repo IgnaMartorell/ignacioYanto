@@ -6,18 +6,36 @@
   <title>Ignacio y Antonella</title>
   <link rel="stylesheet" href="prueba.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      background-color: #fdf6f0;
-      text-align: center;
-      overflow-y: auto;  /* Habilitar el scroll en toda la página */
-    }
+/* Fondo animado */
+@keyframes fondoAnimado {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  text-align: center;
+  overflow-y: auto;
+
+  /* Fondo con animación */
+  background: linear-gradient(-45deg, #fdd7e4, #ffb7c3, #ffe4e1, #fff);
+  background-size: 400% 400%;
+  animation: fondoAnimado 10s ease infinite; /* Velocidad y repetición */
+}
+
 
     /* Estilo para la sección con scroll */
     .scroll-content {
@@ -69,18 +87,18 @@
     .contador span {
       font-size: 36px;
       font-weight: bold;
-      color: #3f4f68;
+      color: #e79eff;
     }
 
     .titulo {
       font-size: 18px;
-      color: #707070;
+      color: #000000;
     }
 
     footer {
       margin-top: 20px;
       font-size: 14px;
-      color: #999;
+      color: #000000;
     }
 
     /* Carrusel de imágenes */
@@ -301,7 +319,7 @@
     </div>
   </div>
 
-  <h2><span class=".corazon">♡</span> Juntos Por <span class=".corazon">♡</span></h2>
+  <h2><span style="color: red;">♡</span> Juntos Por <span style="color: red;">♡</span></h2>
 
   <!-- Contador central -->
   <div class="contador">
